@@ -1,10 +1,11 @@
+import { StyledButtonText } from '../styled-comps';
+
 export default function RegularButton({ children, handleClick }: { children: any, handleClick: any }) {
     return (
-        <button
-            className="btn btn--text"
+        <StyledButtonText
             onClick={handleClick}
         >
             {children}
-        </button>
+        </StyledButtonText>
     )
 }

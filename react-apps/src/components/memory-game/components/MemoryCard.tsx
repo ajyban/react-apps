@@ -1,16 +1,16 @@
-export default function MemoryCard({ handleClick }: { handleClick: any }) {
-    const emojiArray = ['🐶', '🐷', '🐙', '🐛', '🐵', '🐶', '🐷', '🐙', '🐛', '🐵']
+import { CardContainer, CardItem, StyledButtonEmoji } from '../styled-comps'
+import { decode } from 'html-entities';
 
-    const emojiEl = emojiArray.map((emoji, index) =>
-        <li key={index} className="card-item">
-            <button
-                className="btn btn--emoji"
-                onClick={handleClick}
+export default function MemoryCard({ handleClick, data }: { handleClick: any, data: any }) {
+    const emojiEl = data.map((emoji: any, index: number) =>
+        <CardItem key={index}>
+            <StyledButtonEmoji
+                onClick={() => handleClick(emoji.name, index)}
             >
-                {emoji}
-            </button>
-        </li>
+                {decode(emoji['htmlCode'][0])}
+            </StyledButtonEmoji>
+        </CardItem>
     )
 
-    return <ul className="card-container">{emojiEl}</ul>
+    return <CardContainer>{emojiEl}</CardContainer>
 }
